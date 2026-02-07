@@ -88,7 +88,7 @@ border: none;</string>
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>D:/TEC/4to Semestre/Programación/GitHub/superpaint/icons/brush.png</normaloff>D:/TEC/4to Semestre/Programación/GitHub/superpaint/icons/brush.png</iconset>
+      <normaloff>../icons/brush.png</normaloff>../icons/brush.png</iconset>
     </property>
    </widget>
    <widget class="QPushButton" name="btnBorrador">
@@ -109,7 +109,7 @@ border: none;</string>
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>D:/TEC/4to Semestre/Programación/GitHub/superpaint/icons/eraser.png</normaloff>D:/TEC/4to Semestre/Programación/GitHub/superpaint/icons/eraser.png</iconset>
+      <normaloff>../icons/eraser.png</normaloff>../icons/eraser.png</iconset>
     </property>
    </widget>
    <widget class="QPushButton" name="btnLinea">
@@ -130,7 +130,7 @@ border: none;</string>
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>D:/TEC/4to Semestre/Programación/GitHub/superpaint/icons/line.png</normaloff>D:/TEC/4to Semestre/Programación/GitHub/superpaint/icons/line.png</iconset>
+      <normaloff>../icons/line.png</normaloff>../icons/line.png</iconset>
     </property>
    </widget>
    <widget class="QPushButton" name="btnCuadro">
@@ -151,7 +151,7 @@ border: none;</string>
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>D:/TEC/4to Semestre/Programación/GitHub/superpaint/icons/square.png</normaloff>D:/TEC/4to Semestre/Programación/GitHub/superpaint/icons/square.png</iconset>
+      <normaloff>../icons/square.png</normaloff>../icons/square.png</iconset>
     </property>
    </widget>
    <widget class="QPushButton" name="btnGuardar">
@@ -159,8 +159,8 @@ border: none;</string>
      <rect>
       <x>570</x>
       <y>20</y>
-      <width>75</width>
-      <height>23</height>
+      <width>41</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -172,7 +172,7 @@ border: none;</string>
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>D:/TEC/4to Semestre/Programación/GitHub/superpaint/icons/save.png</normaloff>D:/TEC/4to Semestre/Programación/GitHub/superpaint/icons/save.png</iconset>
+      <normaloff>../icons/save.png</normaloff>../icons/save.png</iconset>
     </property>
    </widget>
    <widget class="QComboBox" name="comboDibujos">
@@ -227,7 +227,7 @@ border: none;</string>
   <customwidget>
    <class>Canvas</class>
    <extends>QWidget</extends>
-   <header>canvas.py</header>
+   <header>canvas</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
