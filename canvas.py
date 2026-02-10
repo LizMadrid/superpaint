@@ -1,7 +1,9 @@
-from PyQt6.QtWidgets import QWidget
+from PyQt6.QtWidgets import QWidget, QMessageBox
 from PyQt6.QtCore import Qt, QPoint, QPointF, QRectF
 from PyQt6.QtGui import QPainter, QPen, QImage
 from PyQt6.QtGui import QColor
+from PyQt6.QtWidgets import QFileDialog
+
 
 
 class Canvas(QWidget):
@@ -54,5 +56,56 @@ class Canvas(QWidget):
             painter.drawLine(self.last_point, end_point)
         self.update()
         self.last_point = end_point
+    def clear(self):
+        self.image.fill(QColor("#afedd7"))
+        self.update()
+    def save_image (self):
+        file_path = QFileDialog.getSaveFileName(
+            self,
+            "Save image",
+            "",
+            "PNG files (*.png);;All files(*)"
+        )
+        if file_path:
+            self.image.save(file_path[0])
+            QMessageBox.information(self, "Super Paint", "Imagen guardada correctamente")
+    def open_image(self):
+        file_path = QFileDialog.getOpenFileName(
+            self,
+            "Abrir imagen",
+            "",
+            "PNG Files (*.png);;All files (*)"
+        )
+        if file_path:
+            self.image = QImage(file_path[0])
+            self.update()
+    def draw_grid(self, value):
+        with QPainter(self.image) as painter:
+            painter.setPen(QPen(QColor("#f00"),1,Qt.PenStyle.SolidLine,Qt.PenCapStyle.RoundCap, Qt.PenJoinStyle.RoundJoin))
+            w = self.image.width()
+            h = self.image.height()
+            div = int(w/int(value)) #600/10
+            total_l = int(value)
+            self.clear()
+            for x in range(1,total_l):
+                painter.drawLine(div*x,0,div*x,h)
+                painter.drawLine(0,div*x,w,div*x)
+        self.update()
+    def draw_star(self, value):
+        with QPainter(self.image) as painter:
+            painter.setPen(QPen(QColor("#f00"),1,Qt.PenStyle.SolidLine,Qt.PenCapStyle.RoundCap, Qt.PenJoinStyle.RoundJoin))
+            w = self.image.width()
+            h = self.image.height()
+            div = int(w/int(value)) #600/10
+            self.clear()
+            mid_w = w // 2
+            mid_h =  h // 2
+            painter.drawLine(mid_h,0, mid_w, h)
+            painter.drawLine(0,mid_h,w,mid_h)
+            for x in range(1,div):
+                painter.drawLine(mid_w,div*x,(mid_w+div), mid_h)
+        self.update()
+
+
 
 
