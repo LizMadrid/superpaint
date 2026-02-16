@@ -137,17 +137,43 @@ class Canvas(QWidget):
             painter.setPen(QPen(QColor("#000000"),1,Qt.PenStyle.SolidLine,Qt.PenCapStyle.RoundCap, Qt.PenJoinStyle.RoundJoin))
             w = self.image.width()
             h = self.image.height()
+            div = int(w /int(value))
             for x in range(1, value):
-                painter.setPen(Qt.PenStyle.NoPen)
-                #Dibuja el cuadro blanco
-                painter.setBrush("#FFF")
-                rect = QRectF(10,10,30,30)
-                painter.drawRect(rect)
-                #dibuja el cuadro negro
-                painter.setPen(Qt.PenStyle.NoPen)
-                painter.setBrush("#000")
-                rect2 = QRectF(40,10,30,30)
-                painter.drawRect(rect2)
+                for y in range(0,value):
+                    if (x+y) % 2 == 0:
+                        painter.setBrush(QColor("#fff"))
+                    else:
+                        painter.setBrush(QColor("#000"))
+                    painter.setPen(Qt.PenStyle.NoPen)
+                    painter.drawRect(div*x,div*y,div,div)
+        self.update()
+
+    def draw_d_star(self,value):
+        self.clear()
+        with QPainter(self.image) as painter:
+            painter.setPen(QPen(QColor("#f00"),1,Qt.PenStyle.SolidLine,Qt.PenCapStyle.RoundCap, Qt.PenJoinStyle.RoundJoin))
+            w = self.image.width()
+            h = self.image.height()
+            mid_w = w // 2
+            mid_h = h // 2
+            div = int(mid_w / int (value))
+            for x in range(1, value):
+                painter.setPen(QPen(QColor("#f00"),1,Qt.PenStyle.SolidLine,Qt.PenCapStyle.RoundCap, Qt.PenJoinStyle.RoundJoin))
+                painter.drawLine(mid_w, div*x, (mid_w +(div*x)),mid_h)
+                painter.drawLine(mid_w,div*x, (mid_w - (div*x)),mid_h)
+                painter.drawLine(mid_w,h-(div*x),(mid_w + (div*x)), mid_h)
+                painter.drawLine(mid_w,h-(div*x),(mid_w - (div*x)), mid_h)
+
+                painter.setPen(QPen(QColor("#00f"),1,Qt.PenStyle.SolidLine,Qt.PenCapStyle.RoundCap, Qt.PenJoinStyle.RoundJoin))
+                painter.drawLine(div*x, div*x, mid_w +(div*x), mid_h - (div*x))
+                painter.drawLine(div*x, div*x, mid_w -(div*x), mid_h + (div*x))
+                painter.drawLine(w-(div*x), h-(div*x), mid_w-(div*x), mid_h +(div*x))
+                painter.drawLine(w-(div*x), h-(div*x), mid_w+(div*x), mid_h -(div*x))
+        self.update()
+
+
+
+
 
 
 
